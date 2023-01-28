@@ -3,13 +3,15 @@ package com.dwbi.dwbibackendv2.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "driver")
-@Getter
 @Setter
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Driver {
     @Id
     @Column(name = "DRIVER_ID", nullable = false)
@@ -24,15 +26,14 @@ public class Driver {
     @Column(name = "CAR_PLATES", length = 10)
     private String carPlates;
 
-    @Column(name = "RATING", length = 2)
-    private String rating;
+    @Column(name = "RATING", precision = 2, scale = 1)
+    private BigDecimal rating;
 
     @Column(name = "PHONE_NUMBER", length = 15)
     private String phoneNumber;
 
     @Lob
-    @Column(name = "DRIVER_TYPE")
+    @Column(name = "driver_type")
     private String driverType;
-
 
 }

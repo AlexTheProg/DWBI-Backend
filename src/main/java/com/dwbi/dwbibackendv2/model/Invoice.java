@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "invoice")
-@Getter
 @Setter
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Invoice {
     @Id
     @Column(name = "INVOICE_ID", nullable = false)

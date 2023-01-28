@@ -6,13 +6,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "client")
-@Getter
 @Setter
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Client {
     @Id
     @Column(name = "CLIENT_ID", nullable = false)
@@ -24,8 +26,8 @@ public class Client {
     @Column(name = "LAST_NAME", length = 25)
     private String lastName;
 
-    @Column(name = "RATING", length = 2)
-    private String rating;
+    @Column(name = "RATING", precision = 2, scale = 1)
+    private BigDecimal rating;
 
     @Column(name = "PHONE_NUMBER", length = 15)
     private String phoneNumber;

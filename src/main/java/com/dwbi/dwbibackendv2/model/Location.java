@@ -5,11 +5,11 @@ import lombok.*;
 
 @Entity
 @Table(name = "location")
-@Getter
 @Setter
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Location {
     @Id
     @Column(name = "LOCATION_ID", nullable = false)

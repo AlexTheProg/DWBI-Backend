@@ -4,20 +4,19 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "trip")
-@Getter
 @Setter
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Trip {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TRIP_ID", nullable = false)
     private Integer id;
 
@@ -28,16 +27,16 @@ public class Trip {
     private BigDecimal estimatedCost;
 
     @Column(name = "PICKUP_TIME")
-    private LocalDateTime pickupTime;
+    private Instant pickupTime;
 
     @Column(name = "DROPOFF_TIME")
-    private LocalDateTime dropoffTime;
+    private Instant dropoffTime;
 
     @Column(name = "CURRENCY", length = 4)
     private String currency;
 
     @Lob
-    @Column(name = "STATUS")
+    @Column(name = "status")
     private String status;
 
     @Column(name = "WAITING_FEE", precision = 15, scale = 2)
@@ -64,6 +63,5 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip")
     private Set<Invoice> invoices = new LinkedHashSet<>();
-
 
 }
