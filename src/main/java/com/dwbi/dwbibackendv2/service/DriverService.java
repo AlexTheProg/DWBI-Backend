@@ -48,4 +48,22 @@ public class DriverService {
 
         return driverRepository.save(driver);
     }
+
+    public Driver updateDriver(Integer id, AddDriverRequest updateDriver){
+        Driver driver = driverRepository.findById(id).orElse(null);
+
+        if (driver != null){
+            driver = Driver.builder()
+                    .firstName(updateDriver.getFirstName())
+                    .lastName(updateDriver.getLastName())
+                    .rating(updateDriver.getRating())
+                    .driverType(updateDriver.getDriverType())
+                    .phoneNumber(updateDriver.getPhoneNumber())
+                    .carPlates(updateDriver.getCarPlates())
+                    .build();
+            driverRepository.save(driver);
+            return driver;
+        }
+        return null;
+    }
 }
