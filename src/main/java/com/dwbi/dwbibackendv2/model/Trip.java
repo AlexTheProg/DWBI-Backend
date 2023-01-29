@@ -62,7 +62,7 @@ public class Trip {
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
 
-    @OneToOne(mappedBy = "trip")
+    @OneToOne(mappedBy = "trip", fetch = FetchType.LAZY)
     private Invoice invoice;
 
 }

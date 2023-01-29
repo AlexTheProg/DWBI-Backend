@@ -32,7 +32,7 @@ public class Invoice {
     @Column(name = "PAYMENT_TYPE")
     private String paymentType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id")
     private Trip trip;
 
