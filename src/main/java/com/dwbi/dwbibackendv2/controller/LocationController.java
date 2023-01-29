@@ -4,6 +4,7 @@ import com.dwbi.dwbibackendv2.controller.requests.LocationRequest;
 import com.dwbi.dwbibackendv2.model.Location;
 import com.dwbi.dwbibackendv2.service.LocationService;
 import com.electronwill.nightconfig.core.conversion.Path;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class LocationController {
     private final LocationService locationService;
 
     @GetMapping("/locations")
+    @ApiResponse(responseCode = "200", useReturnTypeSchema = true)
     public ResponseEntity<List<Location>> getAllLocations() {
         return ResponseEntity.ok(locationService.getAllLocations());
     }
