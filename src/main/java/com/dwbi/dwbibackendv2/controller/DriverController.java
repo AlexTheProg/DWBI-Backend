@@ -34,4 +34,11 @@ public class DriverController {
     public ResponseEntity<Driver> addDriver(@RequestBody AddDriverRequest request){
         return ResponseEntity.ok(driverService.saveDriver(request));
     }
+
+    @PutMapping("/drivers/{id}")
+    public ResponseEntity<Driver> updateDriver(@PathVariable("id")Integer id,
+                                               @RequestBody AddDriverRequest updateDriver){
+        return ResponseEntity.ok(driverService.updateDriver(id, updateDriver));
+    }
+
 }
