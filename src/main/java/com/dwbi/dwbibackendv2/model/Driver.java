@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Driver {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DRIVER_ID", nullable = false)
     private Integer id;
 

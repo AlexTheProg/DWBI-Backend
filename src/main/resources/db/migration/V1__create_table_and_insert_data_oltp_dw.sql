@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `client` (
-                          `CLIENT_ID` int NOT NULL,
+                          `CLIENT_ID` int NOT NULL AUTO_INCREMENT,
                           `FIRST_NAME` varchar(25) DEFAULT NULL,
     `LAST_NAME` varchar(25) DEFAULT NULL,
     `RATING` decimal(2,1) DEFAULT NULL,
@@ -82,7 +82,7 @@ DROP TABLE IF EXISTS `driver`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `driver` (
-                          `DRIVER_ID` int NOT NULL,
+                          `DRIVER_ID` int NOT NULL AUTO_INCREMENT,
                           `LAST_NAME` varchar(50) DEFAULT NULL,
     `FIRST_NAME` varchar(50) DEFAULT NULL,
     `CAR_PLATES` varchar(10) DEFAULT NULL,
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS `invoice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `invoice` (
-                           `INVOICE_ID` int NOT NULL,
+                           `INVOICE_ID` int NOT NULL AUTO_INCREMENT,
                            `AMOUNT_TO_PAY` decimal(15,2) DEFAULT NULL,
     `STATUS` enum('APPROVED','CANCELLED','FAILED') DEFAULT NULL,
     `TIPS` decimal(15,2) DEFAULT NULL,
@@ -228,7 +228,7 @@ DROP TABLE IF EXISTS `location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `location` (
-                            `LOCATION_ID` int NOT NULL,
+                            `LOCATION_ID` int NOT NULL AUTO_INCREMENT,
                             `LOCATION_TYPE` enum('URBAN','RURAL') DEFAULT NULL,
     `COUNTY` varchar(25) DEFAULT NULL,
     `CITY` varchar(25) DEFAULT NULL,
@@ -309,7 +309,7 @@ DROP TABLE IF EXISTS `trip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `trip` (
-                        `TRIP_ID` int NOT NULL,
+                        `TRIP_ID` int NOT NULL AUTO_INCREMENT,
                         `DISTANCE` decimal(4,2) DEFAULT NULL,
     `ESTIMATED_COST` decimal(15,2) DEFAULT NULL,
     `PICKUP_TIME` datetime DEFAULT NULL,

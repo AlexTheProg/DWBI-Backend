@@ -17,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Trip {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TRIP_ID", nullable = false)
     private Integer id;
 

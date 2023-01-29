@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Location {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LOCATION_ID", nullable = false)
     private Integer id;
 
