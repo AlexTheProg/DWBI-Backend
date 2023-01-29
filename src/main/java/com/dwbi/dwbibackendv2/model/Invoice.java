@@ -32,7 +32,7 @@ public class Invoice {
     @Column(name = "PAYMENT_TYPE")
     private String paymentType;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "trip_id")
     private Trip trip;
 
