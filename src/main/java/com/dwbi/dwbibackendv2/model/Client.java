@@ -1,9 +1,6 @@
 package com.dwbi.dwbibackendv2.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -17,6 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CLIENT_ID", nullable = false)
     private Integer id;
 
