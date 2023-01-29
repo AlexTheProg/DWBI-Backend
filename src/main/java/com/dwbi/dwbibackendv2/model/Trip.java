@@ -62,7 +62,7 @@ public class Trip {
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
 
-    @OneToMany(mappedBy = "trip")
-    private Set<Invoice> invoices = new LinkedHashSet<>();
+    @OneToOne(mappedBy = "trip")
+    private Invoice invoice;
 
 }
