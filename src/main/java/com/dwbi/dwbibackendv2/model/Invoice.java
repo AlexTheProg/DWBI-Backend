@@ -1,6 +1,6 @@
 package com.dwbi.dwbibackendv2.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,9 +33,9 @@ public class Invoice {
     @Column(name = "PAYMENT_TYPE")
     private String paymentType;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Trip trip;
 
 }

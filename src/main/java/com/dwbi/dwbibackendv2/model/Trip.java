@@ -1,6 +1,6 @@
 package com.dwbi.dwbibackendv2.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -64,7 +64,7 @@ public class Trip {
     private Client client;
 
     @OneToOne(mappedBy = "trip", fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonBackReference
     private Invoice invoice;
 
 }
