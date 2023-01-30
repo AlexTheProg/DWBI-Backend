@@ -1,5 +1,6 @@
 package com.dwbi.dwbibackendv2.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,23 +47,24 @@ public class Trip {
     @Column(name = "CANCEL_FEE", precision = 15, scale = 2)
     private BigDecimal cancelFee;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "LOCATION_START_ID")
     private Location locationStart;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "LOCATION_END_ID")
     private Location locationEnd;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DRIVER_ID")
     private Driver driver;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
 
-    @OneToOne(mappedBy = "trip", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "trip", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Invoice invoice;
 
 }

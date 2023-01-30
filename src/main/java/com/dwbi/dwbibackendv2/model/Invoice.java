@@ -1,5 +1,6 @@
 package com.dwbi.dwbibackendv2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +35,7 @@ public class Invoice {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id")
+    @JsonBackReference
     private Trip trip;
 
 }
