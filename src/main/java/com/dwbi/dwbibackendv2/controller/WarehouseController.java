@@ -2,6 +2,7 @@ package com.dwbi.dwbibackendv2.controller;
 
 import com.dwbi.dwbibackendv2.model.warehouse.CompletedAndCancelledTripsEachCity;
 import com.dwbi.dwbibackendv2.repo.WarehouseRepository;
+import com.dwbi.dwbibackendv2.service.WarehouseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,11 @@ import java.util.List;
 @RequestMapping("/api/v1/warehouse")
 @RequiredArgsConstructor
 public class WarehouseController {
-    private final WarehouseRepository warehouseRepository;
+    private final WarehouseService warehouseService;
 
     @GetMapping("/trip-status-stats")
     public ResponseEntity<List<?>> tripStatusStats() {
-        return ResponseEntity.ok(warehouseRepository.getCompletedCancelledTripStats());
+        return ResponseEntity.ok(warehouseService.get());
     }
 
 }

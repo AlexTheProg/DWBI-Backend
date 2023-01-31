@@ -1,32 +1,21 @@
 package com.dwbi.dwbibackendv2.repo;
 
+
+import com.dwbi.dwbibackendv2.model.Trip;
 import com.dwbi.dwbibackendv2.model.warehouse.CompletedAndCancelledTripsEachCity;
-import jakarta.persistence.*;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import java.util.List;
-import java.util.stream.Collectors;
-
-@Repository
-@RequiredArgsConstructor
-public class WarehouseRepository {
-
-    @PersistenceContext
-    private final EntityManager entityManager;
 
 
-    public List<?> getCompletedCancelledTripStats() {
-        List<?> resultList =
-                entityManager.createNativeQuery("""
-                                SELECT status, COUNT(trip_id), CITY
-                                FROM trip_dw trip, location_dw location
-                                WHERE trip.LOCATION_START_ID = location.LOCATION_ID
-                                GROUP BY status, CITY
-                                ORDER BY COUNT(trip_id) DESC""", "TripStatsResult")
-                        .getResultList();
 
-        return resultList;
-    }
+public interface WarehouseRepository extends JpaRepository<Trip, Integer> {
+
+    @Query(value = "SELECT status AS tripStatus, COUNT(trip_id) AS tripCount, CITY AS city\n" +
+            "                                FROM trip_dw trip, location_dw location\n" +
+            "                                WHERE trip.LOCATION_START_ID = location.LOCATION_ID\n" +
+            "                                GROUP BY status, CITY\n" +
+            "                                ORDER BY COUNT(trip_id) DESC", nativeQuery = true)
+    List<CompletedAndCancelledTripsEachCity> getCompletedCancelledTripStats();
 
 }
