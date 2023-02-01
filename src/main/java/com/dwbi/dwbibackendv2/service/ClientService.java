@@ -58,6 +58,7 @@ public class ClientService {
                     .password(updateRequest.getPassword())
                     .email(updateRequest.getEmail())
                     .build();
+             client.setId(id);
             clientRepository.save(client);
             return client;
         }
