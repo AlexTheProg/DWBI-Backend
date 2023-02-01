@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/oltp")
@@ -16,8 +19,8 @@ public class DriverController {
     private final DriverService driverService;
 
     @GetMapping("/drivers")
-    public ResponseEntity<Set<Driver>>  consultOltpDrivers(){
-        return ResponseEntity.ok(driverService.getAllDrivers());
+    public ResponseEntity<List<Driver>>  consultOltpDrivers(){
+        return ResponseEntity.ok(driverService.getAllDrivers().stream().sorted(Comparator.comparingInt(Driver::getId)).collect(Collectors.toList()));
     }
 
     @GetMapping("/drivers/{id}")

@@ -45,6 +45,7 @@ public class InvoiceService {
                     .paymentType(request.getPaymentType())
                     .amountToPay(request.getAmountToPay())
                     .build();
+            invoice.setId(id);
             invoiceRepository.save(invoice);
             return invoice;
         }

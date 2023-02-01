@@ -61,6 +61,7 @@ public class DriverService {
                     .phoneNumber(updateDriver.getPhoneNumber())
                     .carPlates(updateDriver.getCarPlates())
                     .build();
+            driver.setId(id);
             driverRepository.save(driver);
             return driver;
         }

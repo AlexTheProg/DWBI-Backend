@@ -70,6 +70,7 @@ public class TripService {
                     .locationStart(request.getLocationStart())
                     .waitingFee(request.getWaitingFee())
                     .build();
+            trip.setId(id);
             tripRepository.save(trip);
             return trip;
         }

@@ -42,6 +42,7 @@ public class LocationService {
                     .street(request.getStreet())
                     .city(request.getCity())
                     .build();
+            location.setId(id);
             locationRepository.save(location);
             return location;
         }
